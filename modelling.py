@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
 # 1. Setup MLflow Tracking (Lokal)
-mlflow.set_tracking_uri("http://127.0.0.1:5000")
+#mlflow.set_tracking_uri("http://127.0.0.1:5000")
 mlflow.set_experiment("My_Iris_Classification_Basic")
 
 # 2. Load Data yang sudah bersih
@@ -26,4 +26,5 @@ with mlflow.start_run():
     
     predictions = model.predict(X_test)
     acc = accuracy_score(y_test, predictions)
+
     print(f"Model Training Selesai. Accuracy: {acc}")
