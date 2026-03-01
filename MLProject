@@ -1,4 +1,4 @@
-name: Iris_Classification_CI
+name: Dry_Bean_Classification_CI
 
 entry_points:
   main:
