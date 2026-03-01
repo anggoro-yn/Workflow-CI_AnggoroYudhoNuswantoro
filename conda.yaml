@@ -1,4 +1,4 @@
-name: iris_env
+name: dry_bean_env
 channels:
   - defaults
   - conda-forge
