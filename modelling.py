@@ -6,9 +6,9 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
 # 1. Setup MLflow Tracking (Lokal)
-# Bagian ini dikomentari agar tidak error di GitHub Actions (Kriteria 3)
-# mlflow.set_tracking_uri("http://127.0.0.1:5000")
-# mlflow.set_experiment("Dry_Bean_Classification")
+# Bagian ini tetap dikomentari agar tidak error di GitHub Actions (Kriteria 3)
+mlflow.set_tracking_uri("http://127.0.0.1:5000")
+mlflow.set_experiment("Dry_Bean_Classification")
 
 # 2. Load Data Dry Bean
 # Pastikan path file CSV sesuai dengan lokasi file di folder Anda
@@ -33,5 +33,4 @@ with mlflow.start_run():
     acc = accuracy_score(y_test, predictions)
     
     print(f"Model Training Dry Bean Selesai. Accuracy: {acc}")
-
     mlflow.log_metric("accuracy", acc)
