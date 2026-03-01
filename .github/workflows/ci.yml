@@ -28,3 +28,4 @@ jobs:
         with:
           name: trained-model
           path: mlruns/
+
