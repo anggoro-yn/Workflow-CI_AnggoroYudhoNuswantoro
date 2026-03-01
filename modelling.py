@@ -6,10 +6,11 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
 # 1. Setup MLflow Tracking (Lokal)
-#mlflow.set_tracking_uri("http://127.0.0.1:5000")
-mlflow.set_experiment("My_Iris_Classification_Basic")
+# mlflow.set_tracking_uri("http://127.0.0.1:5000")
+# mlflow.set_experiment("My_Iris_Classification_Basic")
 
-# 2. Load Data yang sudah bersih
+# 2. Load Data
+# Pastikan path ini sesuai dengan struktur folder di GitHub Anda
 df = pd.read_csv('iris_preprocessing/iris_cleaned.csv')
 X = df.drop('variety', axis=1)
 y = df['variety']
@@ -20,6 +21,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 mlflow.sklearn.autolog()
 
 # 4. Training Model
+# Saat dijalankan dengan 'mlflow run', start_run() akan otomatis menyambung ke run yang aktif
 with mlflow.start_run():
     model = RandomForestClassifier(n_estimators=100)
     model.fit(X_train, y_train)
@@ -28,3 +30,6 @@ with mlflow.start_run():
     acc = accuracy_score(y_test, predictions)
 
     print(f"Model Training Selesai. Accuracy: {acc}")
+    
+    # Tambahan: Log metrik secara manual jika ingin lebih eksplisit
+    mlflow.log_metric("accuracy", acc)
